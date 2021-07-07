@@ -12,7 +12,7 @@ export default function Home() {
     useEffect(() => {
         getProducts(`${urlApi}/products`
         ).then(res => {
-            setProducts(res.products)
+            setProducts(res)
         })
     }, [])
      

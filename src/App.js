@@ -1,14 +1,11 @@
-// import AuthProvider from "./controller/auth/AuthProvider";
+// import AuthProvider from "./controller/AuthProvider";
 // import AppRouter from "./routers/AppRouter";
 
 // function App() {
 //   return (
-    
 //       <AuthProvider>
 //         <AppRouter />
-//         {/* <Products/> */}
 //       </AuthProvider>
-   
 //   );
 // }
 

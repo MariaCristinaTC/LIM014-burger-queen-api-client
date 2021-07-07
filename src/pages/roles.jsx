@@ -2,8 +2,8 @@ import React from 'react'
 
 const Roles = () => {
     return (
-        <div>
-            <h1>Rol</h1>
+        <div className="page-admin">
+            {/* <p>Categoria</p> */}
         </div>
     )
 }

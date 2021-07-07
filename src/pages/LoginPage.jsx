@@ -2,12 +2,15 @@ import { useState } from "react";
 import { postAuth } from "../services/auth";
 
 import decode from "jwt-decode";
-import { useHistory } from "react-router-dom";
+import { 
+    useHistory 
+} from "react-router-dom";
+// import useAuth from "../controller/useAuth";
 
 /********** login  ************/
 export default function LoginPage() {
     const history = useHistory();
-    // const auth = useAuth(); /*cONtexto */
+    // const auth = useAuth();
     // const { startSession, role } = auth
 
     const [formLogin, setFormLogin] = useState({
@@ -30,16 +33,16 @@ export default function LoginPage() {
         event.preventDefault();
         console.log("FORM", formLogin);
 
+        // auth.login(
         postAuth(formLogin.email, formLogin.password)
             .then(res => {
-
                 console.log("QUE ERES", res);
                 console.log("QUE ERES PART II EL REGRESO DEL TOKEN", res.token);
+                
+                localStorage.setItem('token', res.token)
 
                 const decoded = decode(res.token);
                 console.log("DESCIFRAR", decoded);
-
-                localStorage.setItem('token', decoded)
 
                 if (decoded.roles.admin) {
                     console.log("TRUE", decoded.roles.admin);
@@ -51,8 +54,14 @@ export default function LoginPage() {
                     history.push("/rol")
                 }
             })
+            // );
 
     }
+
+    //  const Logout = () => {
+    //         localStorage.removeItem('token');
+    //         return <Redirect to="/" />
+    //     }
 
     return (
         <section className="page-login">
@@ -83,7 +92,6 @@ export default function LoginPage() {
                             // value={password.password}
                             value={formLogin.password}
                         />
-
                     </div>
 
                     <button className="button-default"
@@ -92,13 +100,13 @@ export default function LoginPage() {
                     >
                         Iniciar Sesión
                     </button>
-
                 </form>
             </div>
 
         </section>
     )
 }
+
 // import { useHistory, useLocation } from 'react-router-dom';
 // import useAuth from '../controller/auth/useAuth';
 
